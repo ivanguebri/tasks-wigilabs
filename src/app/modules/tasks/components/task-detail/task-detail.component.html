@@ -1,23 +1,14 @@
-<div>
-  <h1>{{ task.description }}</h1>
+<div *ngIf="task$ | async">
+  <h1>{{ (task$ | async)?.description }}</h1>
   <div>
-    <span>Lat: {{ task.lat }}</span>
-    <span>Long: {{ task.long }}</span>
+    <span>Lat: {{ (task$ | async)?.lat }}</span>
+    <span>Long: {{ (task$ | async)?.long }}</span>
   </div>
   <div>
-    <input
-      id="check-task-box"
-      #checkTaskBox
-      type="checkbox"
-      (click)="onTaskActivity(checkTaskBox.checked)"
-      [checked]="task.completed"
-    />
-    <label for="check-task-box">
-      {{
-        task.completed
-          ? "Uncheck to mark as pending"
-          : "Check to mark as completed"
-      }}
-    </label>
+    <span>status: </span>
+    <span *ngIf="(task$ | async)?.completed; else notCompleted">Completed</span>
+    <ng-template #notCompleted>
+      <span>Pending</span>
+    </ng-template>
   </div>
 </div>

@@ -1,29 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Task } from '../../interfaces/task';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'tw-task-detail',
   templateUrl: './task-detail.component.html',
 })
 export class TaskDetailComponent implements OnInit {
-  task: Task = {
-    id: '12341234',
-    description: 'Do the wigilabs technical test',
-    completed: true,
-    lat: 50.22,
-    long: 20.2,
-  };
+  task$!: Observable<Task>;
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private tasksService: TasksService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTask();
+  }
 
-  onTaskActivity(wasChecked: boolean): void {
-    if (wasChecked) {
-      this.task.completed = true;
-      return;
-    }
-    this.task.completed = false;
+  getTask() {
+    const taskId = this.route.snapshot.paramMap.get('id')!;
+    this.task$ = this.tasksService.getTask(taskId);
   }
 }
