@@ -1,0 +1,23 @@
+<div>
+  <h1>{{ task.description }}</h1>
+  <div>
+    <span>Lat: {{ task.lat }}</span>
+    <span>Long: {{ task.long }}</span>
+  </div>
+  <div>
+    <input
+      id="check-task-box"
+      #checkTaskBox
+      type="checkbox"
+      (click)="onTaskActivity(checkTaskBox.checked)"
+      [checked]="task.completed"
+    />
+    <label for="check-task-box">
+      {{
+        task.completed
+          ? "Uncheck to mark as pending"
+          : "Check to mark as completed"
+      }}
+    </label>
+  </div>
+</div>
