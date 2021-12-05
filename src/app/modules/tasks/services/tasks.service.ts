@@ -34,4 +34,8 @@ export class TasksService {
   toggleTaskStatus(id: string, newStatus: boolean): Observable<any> {
     return from(this.tasksCollection.doc(id).update({ completed: newStatus }));
   }
+
+  deleteTask(id: string): Observable<any> {
+    return from(this.tasksCollection.doc(id).delete());
+  }
 }
