@@ -16,8 +16,12 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     this.tasks$ = this.tasksService.getTasks();
-    this.tasksService
-      .getTask('QldoqpxZCne5bevnzRM9')
-      .subscribe((task) => console.log(task));
+  }
+
+  toggleStatus(task: Task): void {
+    const { id, completed: currentStatus } = task;
+    this.tasksService.toggleTaskStatus(id, !currentStatus).subscribe(() => {
+      console.log('done!');
+    });
   }
 }

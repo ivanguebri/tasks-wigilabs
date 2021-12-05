@@ -2,5 +2,7 @@
 <ul>
   <li *ngFor="let task of tasks$ | async">
     {{ task.description }}
+    | status: {{ task.completed ? "Completed" : "Pending" }} |
+    <button (click)="toggleStatus(task)">Toggle status</button>
   </li>
 </ul>

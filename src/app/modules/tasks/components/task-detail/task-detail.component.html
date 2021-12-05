@@ -6,9 +6,6 @@
   </div>
   <div>
     <span>status: </span>
-    <span *ngIf="(task$ | async)?.completed; else notCompleted">Completed</span>
-    <ng-template #notCompleted>
-      <span>Pending</span>
-    </ng-template>
+    <span>{{ (task$ | async)?.completed ? "Completed" : "Pending" }}</span>
   </div>
 </div>

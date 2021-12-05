@@ -3,7 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { Observable, map } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 
 import { Task } from '../interfaces/task';
 
@@ -29,5 +29,9 @@ export class TasksService {
     return this.tasks.pipe(
       map((tasks) => tasks.find((task) => task.id === id)!)
     );
+  }
+
+  toggleTaskStatus(id: string, newStatus: boolean): Observable<any> {
+    return from(this.tasksCollection.doc(id).update({ completed: newStatus }));
   }
 }
