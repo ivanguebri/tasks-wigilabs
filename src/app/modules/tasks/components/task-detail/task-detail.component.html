@@ -8,4 +8,5 @@
     <span>status: </span>
     <span>{{ (task$ | async)?.completed ? "Completed" : "Pending" }}</span>
   </div>
+  <button (click)="goBackToList()">Go back to list</button>
 </div>

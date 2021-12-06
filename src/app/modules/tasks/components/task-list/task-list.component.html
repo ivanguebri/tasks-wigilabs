@@ -4,6 +4,8 @@
     {{ task.description }}
     | status: {{ task.completed ? "Completed" : "Pending" }} |
     <button (click)="toggleTaskStatus(task)">Toggle status</button>
-    | <button (click)="deleteTask(task)">Delete task</button>
+    | <button (click)="deleteTask(task)">Delete task</button> |
+    <a [routerLink]="['../view', task.id]">View detail</a>
   </li>
 </ul>
+<a routerLink="../create">Create task</a>

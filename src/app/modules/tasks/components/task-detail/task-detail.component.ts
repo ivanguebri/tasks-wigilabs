@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Task } from '../../interfaces/task';
@@ -14,15 +14,20 @@ export class TaskDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private tasksService: TasksService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getTask();
   }
 
-  getTask() {
+  getTask(): void {
     const taskId = this.route.snapshot.paramMap.get('id')!;
     this.task$ = this.tasksService.getTask(taskId);
+  }
+
+  goBackToList(): void {
+    this.router.navigateByUrl('/view-tasks');
   }
 }
