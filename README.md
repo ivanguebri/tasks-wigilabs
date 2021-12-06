@@ -5,4 +5,6 @@ To run this project execute the following steps:
 2. Clone this repo in your machine.
 3. Run `npm install` to install the required dependencies.
 4. Checkout to the **main** branch as it is the stable branch.
-5. Run `ng serve` to locally serve in you machine.
+5. Ask the owner for the **environment.example.ts** file and
+merge the contents into the **environment.ts** file.
+6. Run `ng serve` to locally serve in you machine.
