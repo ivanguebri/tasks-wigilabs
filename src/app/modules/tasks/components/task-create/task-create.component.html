@@ -1,0 +1,20 @@
+<h1>Create New Task</h1>
+<form [formGroup]="newTaskForm">
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+  <div>
+    <label for="completed">Task status:</label>
+    <input type="checkbox" id="completed" formControlName="completed" />
+  </div>
+  <div>
+    <label for="latitude">Latitude:</label>
+    <input type="number" id="latitude" formControlName="lat" />
+  </div>
+  <div>
+    <label for="long">Longitude:</label>
+    <input type="number" id="long" formControlName="long" />
+  </div>
+  <input type="submit" value="Create" (click)="addTask()" />
+</form>

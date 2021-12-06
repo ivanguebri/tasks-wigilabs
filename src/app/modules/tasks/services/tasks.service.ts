@@ -38,4 +38,8 @@ export class TasksService {
   deleteTask(id: string): Observable<any> {
     return from(this.tasksCollection.doc(id).delete());
   }
+
+  addTask(task: Task): Observable<any> {
+    return from(this.tasksCollection.add(task));
+  }
 }
